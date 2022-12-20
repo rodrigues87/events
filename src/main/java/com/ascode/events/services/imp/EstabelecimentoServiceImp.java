@@ -37,4 +37,14 @@ public class EstabelecimentoServiceImp implements EstabelecimentoService {
 
         return new PageImpl<>(estabelecimentoDtos, pageable, estabelecimentoDtos.size());
     }
+
+    @Override
+    public EstabelecimentoDto save(EstabelecimentoDto estabelecimentoDto) {
+
+        EstabelecimentoEntity estabelecimentoEntity = modelMapper.map(estabelecimentoDto, EstabelecimentoEntity.class);
+
+        estabelecimentoEntityRepository.save(estabelecimentoEntity);
+
+        return estabelecimentoDto;
+    }
 }
