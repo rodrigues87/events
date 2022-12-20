@@ -3,6 +3,7 @@ package com.ascode.events.services.imp;
 import com.ascode.events.dtos.EstabelecimentoDto;
 import com.ascode.events.entities.EstabelecimentoEntity;
 import com.ascode.events.exceptions.EstabelecimentoNotFoundException;
+import com.ascode.events.exceptions.NotFoundException;
 import com.ascode.events.repositories.EstabelecimentoRepository;
 import com.ascode.events.services.EstabelecimentoService;
 import lombok.extern.slf4j.Slf4j;
@@ -15,6 +16,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 @Service
 @Slf4j
@@ -34,7 +36,7 @@ public class EstabelecimentoServiceImp implements EstabelecimentoService {
         Page<EstabelecimentoEntity> estabelecimentoEntityPage = estabelecimentoRepository.findAll(pageable);
 
         List<EstabelecimentoDto> estabelecimentoDtos = estabelecimentoEntityPage.stream().map(estabelecimentoEntity ->
-                modelMapper.map(estabelecimentoEntity, EstabelecimentoDto.class)).toList();
+                modelMapper.map(estabelecimentoEntity, EstabelecimentoDto.class)).collect(Collectors.toList());
 
         return new PageImpl<>(estabelecimentoDtos, pageable, estabelecimentoDtos.size());
     }

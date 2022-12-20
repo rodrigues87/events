@@ -1,10 +1,10 @@
 package com.ascode.events.exceptions;
 
-public class NotFoundException extends RuntimeException {
+public class BadRequestException extends RuntimeException {
 
 	private static final long serialVersionUID = -7114487653197757339L;
 
-	public NotFoundException(String message) {
+	public BadRequestException(String message) {
 		super(message);
 	}
 }
