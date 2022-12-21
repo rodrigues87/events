@@ -1,6 +1,6 @@
 package com.ascode.events.controllers;
 
-import com.ascode.events.dtos.EstabelecimentoDto;
+import com.ascode.events.dtos.StablishmentDto;
 import com.ascode.events.services.EstabelecimentoService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -22,29 +22,29 @@ import java.util.UUID;
 @Slf4j
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/estabelecimentos")
+@RequestMapping("/stablishments")
 public class EstabelecimentoController {
 
     private final EstabelecimentoService estabelecimentoService;
 
     @GetMapping
-    public ResponseEntity<Page<EstabelecimentoDto>> findAll(Pageable pageable){
+    public ResponseEntity<Page<StablishmentDto>> findAll(Pageable pageable){
 
         return ResponseEntity.status(HttpStatus.OK).body(estabelecimentoService.findAll(pageable));
     }
 
     @PostMapping
-    public ResponseEntity<EstabelecimentoDto> create(@RequestBody EstabelecimentoDto estabelecimentoDto){
+    public ResponseEntity<StablishmentDto> create(@RequestBody StablishmentDto stablishmentDto){
 
-        return ResponseEntity.status(HttpStatus.CREATED).body(estabelecimentoService.save(estabelecimentoDto));
+        return ResponseEntity.status(HttpStatus.CREATED).body(estabelecimentoService.save(stablishmentDto));
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<EstabelecimentoDto> update(
+    public ResponseEntity<StablishmentDto> update(
             @PathVariable UUID id,
-            @RequestBody EstabelecimentoDto estabelecimentoDto){
+            @RequestBody StablishmentDto stablishmentDto){
 
-        return ResponseEntity.status(HttpStatus.OK).body(estabelecimentoService.update(estabelecimentoDto,id));
+        return ResponseEntity.status(HttpStatus.OK).body(estabelecimentoService.update(stablishmentDto,id));
     }
 
     @DeleteMapping("/{id}")

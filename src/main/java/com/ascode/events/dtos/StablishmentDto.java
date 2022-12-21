@@ -1,5 +1,6 @@
 package com.ascode.events.dtos;
 
+import com.ascode.events.entities.StablishmentEntity;
 import com.ascode.events.enums.UnidadeFederacao;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -11,14 +12,14 @@ import java.io.Serializable;
 import java.util.UUID;
 
 /**
- * A DTO for the {@link com.ascode.events.entities.EstabelecimentoEntity} entity
+ * A DTO for the {@link StablishmentEntity} entity
  */
 @Data
 @Builder
 @EqualsAndHashCode
 @NoArgsConstructor
 @AllArgsConstructor
-public class EstabelecimentoDto implements Serializable {
+public class StablishmentDto implements Serializable {
     private UUID id;
     private String nome;
     private String telefone;

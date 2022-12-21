@@ -1,9 +1,8 @@
 package com.ascode.events.services.imp;
 
-import com.ascode.events.dtos.EstabelecimentoDto;
-import com.ascode.events.entities.EstabelecimentoEntity;
+import com.ascode.events.dtos.StablishmentDto;
+import com.ascode.events.entities.StablishmentEntity;
 import com.ascode.events.exceptions.EstabelecimentoNotFoundException;
-import com.ascode.events.exceptions.NotFoundException;
 import com.ascode.events.repositories.EstabelecimentoRepository;
 import com.ascode.events.services.EstabelecimentoService;
 import lombok.extern.slf4j.Slf4j;
@@ -31,36 +30,36 @@ public class EstabelecimentoServiceImp implements EstabelecimentoService {
     }
 
     @Override
-    public Page<EstabelecimentoDto> findAll(Pageable pageable) {
+    public Page<StablishmentDto> findAll(Pageable pageable) {
 
-        Page<EstabelecimentoEntity> estabelecimentoEntityPage = estabelecimentoRepository.findAll(pageable);
+        Page<StablishmentEntity> estabelecimentoEntityPage = estabelecimentoRepository.findAll(pageable);
 
-        List<EstabelecimentoDto> estabelecimentoDtos = estabelecimentoEntityPage.stream().map(estabelecimentoEntity ->
-                modelMapper.map(estabelecimentoEntity, EstabelecimentoDto.class)).collect(Collectors.toList());
+        List<StablishmentDto> stablishmentDtos = estabelecimentoEntityPage.stream().map(estabelecimentoEntity ->
+                modelMapper.map(estabelecimentoEntity, StablishmentDto.class)).collect(Collectors.toList());
 
-        return new PageImpl<>(estabelecimentoDtos, pageable, estabelecimentoDtos.size());
+        return new PageImpl<>(stablishmentDtos, pageable, stablishmentDtos.size());
     }
 
     @Override
-    public EstabelecimentoDto save(EstabelecimentoDto estabelecimentoDto) {
+    public StablishmentDto save(StablishmentDto stablishmentDto) {
 
-        EstabelecimentoEntity estabelecimentoEntity = modelMapper.map(estabelecimentoDto, EstabelecimentoEntity.class);
+        StablishmentEntity stablishmentEntity = modelMapper.map(stablishmentDto, StablishmentEntity.class);
 
-        estabelecimentoEntity = estabelecimentoRepository.save(estabelecimentoEntity);
+        stablishmentEntity = estabelecimentoRepository.save(stablishmentEntity);
 
-        return modelMapper.map(estabelecimentoEntity, EstabelecimentoDto.class);
+        return modelMapper.map(stablishmentEntity, StablishmentDto.class);
     }
 
     @Override
-    public EstabelecimentoDto update(EstabelecimentoDto estabelecimentoDto, UUID uuid) {
+    public StablishmentDto update(StablishmentDto stablishmentDto, UUID uuid) {
 
         existsById(uuid);
 
-        EstabelecimentoEntity estabelecimentoEntity = modelMapper.map(estabelecimentoDto, EstabelecimentoEntity.class);
+        StablishmentEntity stablishmentEntity = modelMapper.map(stablishmentDto, StablishmentEntity.class);
 
-        estabelecimentoRepository.save(estabelecimentoEntity);
+        estabelecimentoRepository.save(stablishmentEntity);
 
-        return modelMapper.map(estabelecimentoEntity, EstabelecimentoDto.class);
+        return modelMapper.map(stablishmentEntity, StablishmentDto.class);
     }
 
     @Override

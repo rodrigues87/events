@@ -1,17 +1,17 @@
 package com.ascode.events.services;
 
-import com.ascode.events.dtos.EstabelecimentoDto;
+import com.ascode.events.dtos.StablishmentDto;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
 import java.util.UUID;
 
 public interface EstabelecimentoService {
-    Page<EstabelecimentoDto> findAll(Pageable pageable);
+    Page<StablishmentDto> findAll(Pageable pageable);
 
-    EstabelecimentoDto save(EstabelecimentoDto estabelecimentoDto);
+    StablishmentDto save(StablishmentDto stablishmentDto);
 
-    EstabelecimentoDto update(EstabelecimentoDto estabelecimentoDto, UUID uuid);
+    StablishmentDto update(StablishmentDto stablishmentDto, UUID uuid);
 
     String delete(UUID id);
 }

@@ -24,13 +24,13 @@ import java.util.UUID;
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
-public class EstabelecimentoEntity {
+public class StablishmentEntity {
 
     private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    protected UUID id;
+    protected UUID stablishmentId;
 
     private String nome;
     private String telefone;
